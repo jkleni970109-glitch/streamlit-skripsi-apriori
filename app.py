@@ -62,9 +62,9 @@ if uploaded_file is not None:
 
     support = st.number_input(
         "Minimum Support",
-        min_value=0.001,
+        min_value=0.003,
         max_value=1.000,
-        value=0.001,
+        value=0.003,
         step=0.001,
         format="%.3f",
         help="Nilai minimum support untuk mencari frequent itemsets."
