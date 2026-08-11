@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from style import load_css
 import re #mencari atau mengganti pola(angka desimal data brg)
+from pathlib import Path
 from mlxtend.frequent_patterns import apriori
 from mlxtend.frequent_patterns import association_rules
 
@@ -29,7 +30,8 @@ uploaded_file = st.file_uploader(
 
 if uploaded_file is not None:
     df = pd.read_excel(uploaded_file)
-    obat_keras = pd.read_excel("data/Data_Produk_Obat_Keras.xlsx") #membaca daftar obat keras
+    BASE_DIR = Path(__file__).resolve().parent
+    obat_keras = pd.read_excel(BASE_DIR / "data" / "Data_Produk_Obat_Keras.xlsx") #membaca daftar obat keras
     daftar_obat_keras = set(
         obat_keras["Barang"]
         .astype(str)
